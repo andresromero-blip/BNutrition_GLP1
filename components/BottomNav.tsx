@@ -12,7 +12,7 @@ const items = [
 
 export default function BottomNav() {
   return (
-    <nav className="fixed bottom-0 left-0 z-40 w-full bg-white border-t border-[#e9e9ea] rounded-t-[30px] shadow-[4px_0px_5px_rgba(201,207,237,0.6)]">
+    <nav className="md:hidden fixed bottom-0 left-0 z-40 w-full bg-white border-t border-[#e9e9ea] rounded-t-[30px] shadow-[4px_0px_5px_rgba(201,207,237,0.6)]">
       <div className="max-w-[390px] mx-auto flex items-center justify-center gap-9 py-5">
         {items.map(({ icon: Icon, label }) => (
           <button

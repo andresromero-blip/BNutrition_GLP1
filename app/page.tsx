@@ -8,6 +8,7 @@ import ProductSection from "@/components/ProductSection";
 import FiltrosModal from "@/components/FiltrosModal";
 import FichaModal from "@/components/FichaModal";
 import BottomNav from "@/components/BottomNav";
+import RecipeCarousel from "@/components/RecipeCarousel";
 import Footer from "@/components/Footer";
 import { getProductsByCategory, type Product } from "@/lib/products";
 import type { AppliedFilters } from "@/lib/types";
@@ -49,10 +50,10 @@ export default function Home() {
     (applied.category ? 1 : 0) + applied.subcategoryIds.length;
 
   return (
-    <main className="bg-white pt-[64px] pb-[80px]">
+    <main className="bg-white pt-[64px] pb-[80px] md:pt-0 md:pb-0">
       <Header />
       <Hero />
-      <div className="max-w-[390px] mx-auto sticky top-[64px] z-20 bg-white pt-2 pb-4">
+      <div className="max-w-[390px] md:max-w-3xl mx-auto sticky top-[64px] md:top-[81px] z-20 bg-white pt-2 pb-4">
         <SearchAndFilters
           query={query}
           onQueryChange={setQuery}
@@ -61,23 +62,26 @@ export default function Home() {
         />
       </div>
 
+      {/* Orden 1:1 con Figma: Con fibra aparece antes que Con proteína en ambos frames */}
+      <ProductSection
+        variant="fibra"
+        titleSuffix="FIBRA"
+        tagLabel="Con fibra"
+        description="Aportan saciedad y ayudan a tu digestión: dos aliados clave durante tu tratamiento GLP-1."
+        products={fibraProducts}
+        onVerFicha={setSelectedProduct}
+      />
+
       <ProductSection
         variant="proteina"
-        title="CON PROTEÍNA"
+        titleSuffix="PROTEÍNA"
         tagLabel="Con proteína"
         description="Aprende cómo la ciencia de los alimentos mejora tu salud y bienestar diariamente."
         products={proteinaProducts}
         onVerFicha={setSelectedProduct}
       />
 
-      <ProductSection
-        variant="fibra"
-        title="CON FIBRA"
-        tagLabel="Con fibra"
-        description="Aportan saciedad y ayudan a tu digestión: dos aliados clave durante tu tratamiento GLP-1."
-        products={fibraProducts}
-        onVerFicha={setSelectedProduct}
-      />
+      <RecipeCarousel />
 
       <Footer />
       <BottomNav />
