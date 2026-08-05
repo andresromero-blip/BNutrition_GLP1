@@ -49,10 +49,10 @@ export default function Home() {
     (applied.category ? 1 : 0) + applied.subcategoryIds.length;
 
   return (
-    <main className="bg-white">
+    <main className="bg-white pt-[64px] pb-[80px]">
       <Header />
       <Hero />
-      <div className="max-w-[390px] mx-auto sticky top-0 z-20 bg-white pt-2 pb-4">
+      <div className="max-w-[390px] mx-auto sticky top-[64px] z-20 bg-white pt-2 pb-4">
         <SearchAndFilters
           query={query}
           onQueryChange={setQuery}

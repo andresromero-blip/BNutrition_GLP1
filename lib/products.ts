@@ -170,8 +170,8 @@ export const products: Product[] = [
   {
     id: "pan-integral-protein",
     category: "proteina",
-    subcategoryId: "pan-integral",
-    badge: "Pan integral",
+    subcategoryId: "pan-blanco",
+    badge: "Pan blanco",
     title: "Pan Integral\nProtein+",
     image: "/images/products/pan-integral-protein.jpg",
     servings: "8 porciones",
@@ -193,7 +193,7 @@ export const products: Product[] = [
   {
     id: "cero-cero-multigrano",
     category: "proteina",
-    subcategoryId: "pan-blanco",
+    subcategoryId: "multigrano-y-semillas",
     badge: "Multigrano y semillas",
     title: "Cero Cero\nMultigrano",
     image: "/images/products/cero-cero-multigrano.jpg",
@@ -216,7 +216,7 @@ export const products: Product[] = [
   {
     id: "cero-cero-sin-harinas-proteina",
     category: "proteina",
-    subcategoryId: "pan-blanco",
+    subcategoryId: "sin-harinas-refinadas",
     badge: "Sin harinas refinadas",
     title: "Cero Cero\nSin Harinas",
     image: "/images/products/pan-cero-cero-sin-harinas.jpg",

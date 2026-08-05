@@ -35,7 +35,11 @@ export default function FiltrosModal({
     }
   }, [isOpen, applied]);
 
-  if (!isOpen) return null;
+  // Lock background scroll while the drawer is open
+  useEffect(() => {
+    document.body.classList.toggle("modal-open", isOpen);
+    return () => document.body.classList.remove("modal-open");
+  }, [isOpen]);
 
   const toggleCategory = (c: MacroCategory) => {
     if (category === c) {
@@ -60,11 +64,22 @@ export default function FiltrosModal({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40"
-      onClick={onClose}
+      className={`fixed inset-0 z-50 ${isOpen ? "" : "pointer-events-none"}`}
+      aria-hidden={!isOpen}
     >
+      {/* Backdrop */}
       <div
-        className="bg-white rounded-t-[30px] sm:rounded-[30px] w-full max-w-[342px] max-h-[90vh] overflow-y-auto flex flex-col gap-[23px] items-center pb-[30px]"
+        className={`absolute inset-0 bg-black/40 transition-opacity duration-300 ease-out ${
+          isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        }`}
+        onClick={onClose}
+      />
+
+      {/* Drawer: slides in from the right */}
+      <div
+        className={`absolute right-0 top-0 h-full w-[85%] max-w-[342px] bg-white shadow-2xl overflow-y-auto flex flex-col gap-[23px] items-center pb-[30px] transition-transform duration-300 ease-out ${
+          isOpen ? "translate-x-0" : "translate-x-full"
+        }`}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex justify-end w-full pr-[15px] pt-[10px]">
